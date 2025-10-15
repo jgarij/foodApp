@@ -12,7 +12,7 @@ export default function CategorySidebar() {
         {uniqueCategories.map((category, index) => (
           <li
             key={index}
-            className="  cursor-pointer p-2 rounded-md  bg-blue-950"
+            className="  cursor-pointer p-2 rounded-md "
           >
             {category}
           </li>

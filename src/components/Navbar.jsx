@@ -7,9 +7,9 @@ function Navbar() {
 
     return (
 
-        <div className='flex justify-between h-[65px] items-center px-12 w-full shadow-2xl'>
+        <div className='flex justify-between  items-center bg-blue-900  w-full px-0 md:px-10 '>
 
-            <div className='font-bold text-3xl'>
+            <div className='font-bold text-xl md:text-2xl'>
                 <p>MURAMICITY</p>
 
             </div>

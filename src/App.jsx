@@ -22,6 +22,7 @@ import HeroSectionFooter from './pages/HeroSectionFooter'
 import MenuSection from './components/MenuSection'
 import HeroSection from './pages/HeroSection'
 import MainPage from './pages/MainPage'
+import HomePage from './pages/HomePage'
 function App() {
 
 
@@ -31,9 +32,10 @@ function App() {
    <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="" element={<MainPage></MainPage> }>
+        <Route path="" element={<HomePage/> }>
+        <Route path="menu" element={<MainPage/>} />
         {/* <Route index element={<Opinion />} /> 
-        <Route path="menu" element={<MenuSection />}>
+        // <Route path="menu" element={<MenuSection />}>
           <Route path="main" element={<HeroSectionFooter />} /> */}
           {/* <Route path="settings" element={<Settings />} /> */}
         </Route>

@@ -1,11 +1,21 @@
 body {
   background-color: black;
   color: white;
+   height: 100%;
+   width:100%;
+   padding-left: 0px;
+   padding-right:0px;
 }
 
-.headline-container {
+#root{
   width: 100%;
+}
 
+@media (min-width: 768px) {
+  body {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
 }
 
 .headline {

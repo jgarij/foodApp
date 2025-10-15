@@ -1,15 +1,15 @@
 import React from 'react'
-import { MenuData } from '../assets/data/MenuData'
+import { MenuData,uniqueCategories } from '../assets/data/MenuData'
 import DisplayCategory from './DisplayCategory';
 export default function MenuSection() {
 console.log("MenuSection",MenuData)
-const uniqueCategories = [...new Set(MenuData.items.map(m => m.category))];
+
 function handleSearchChange(){
   console.log("handle search")
 } 
 return (
    
-   <div className='mt-[1000px]'>
+   <div className=''>
    <div className='flex justify-between px-4'>
     <div>
       <input

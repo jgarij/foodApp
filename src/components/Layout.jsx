@@ -7,13 +7,7 @@ import Header from '../pages/Header';
 export default function Layout() {
   return (
     <div>
-      <Link to="/">
-{/*      
-      <TopBar></TopBar>
-      <Navbar></Navbar> */}
-      <Header></Header>
-   
-      </Link>
+      <Link to="/"><Header></Header></Link>
       <Outlet></Outlet>
       <Link to="/" ><Footer></Footer></Link> 
     </div>
