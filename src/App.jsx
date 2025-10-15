@@ -2,10 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { BrowserRouter,Routes, Route } from "react-router-dom"
 import './App.css'
-import TopBar from './components/TopBar'
-import Navbar from './components/Navbar'
-import Slider from './pages/Slider'
+// import TopBar from './components/TopBar'
+// import Navbar from './components/Navbar'
+// import Slider from './pages/Slider'
 import MostWanted from './components/MostWanted'
 import Categories from './pages/Categories';
 import Order from './pages/Order';
@@ -14,28 +15,31 @@ import Footer from './pages/Footer'
 import Opinion from './pages/Opinion'
 import Menu from './pages/Menu'
 import Muramoney from './pages/Muramoney'
-
- import MovingBalls from './components/MovingBall'
-
+import Layout from './components/Layout'
+import MovingBalls from './components/MovingBall'
+import AboutCart from './components/AboutCart'
+import HeroSectionFooter from './pages/HeroSectionFooter'
+import MenuSection from './components/MenuSection'
+import HeroSection from './pages/HeroSection'
+import MainPage from './pages/MainPage'
 function App() {
 
 
-  return (
-    <>
-  
-  <Navbar></Navbar>
-  {/* <Menu></Menu> */}
-  <Muramoney></Muramoney>
- 
-  {/* <Slider></Slider>
-<MostWanted></MostWanted>
-<Categories></Categories>
-<Order></Order>
-<Opinion></Opinion> */}
-{/* <FAQ></FAQ>
-<Footer></Footer> */}
 
-    </>
+
+  return (
+   <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="" element={<MainPage></MainPage> }>
+        {/* <Route index element={<Opinion />} /> 
+        <Route path="menu" element={<MenuSection />}>
+          <Route path="main" element={<HeroSectionFooter />} /> */}
+          {/* <Route path="settings" element={<Settings />} /> */}
+        </Route>
+      </Route>
+    </Routes>
+</BrowserRouter>
 
 
   )
