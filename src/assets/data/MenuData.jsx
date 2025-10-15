@@ -1,4 +1,4 @@
-export const MenuData={
+ const MenuData={
   "items": [
     {
       "category": "Set",
@@ -11,7 +11,27 @@ export const MenuData={
       "quantity": 1
     },
     {
-      "category": "Rolls and Maki",
+    "category": "Roll",
+      "image_url": "URL_TO_IMAGE",
+      "price": "$15.99",
+      "description": "A combination of the best sushi rolls, perfect for sharing or for a full meal.",
+      "title": "Sushi Set",
+      "ingredients": ["Tuna", "Salmon", "Avocado", "Cucumber", "Rice", "Seaweed"],
+      "flavors": ["Umami", "Fresh", "Savoury"],
+      "quantity": 1
+    },
+     {
+    "category": "Sushi",
+      "image_url": "URL_TO_IMAGE",
+      "price": "$15.99",
+      "description": "A combination of the best sushi rolls, perfect for sharing or for a full meal.",
+      "title": "Sushi Set",
+      "ingredients": ["Tuna", "Salmon", "Avocado", "Cucumber", "Rice", "Seaweed"],
+      "flavors": ["Umami", "Fresh", "Savoury"],
+      "quantity": 1
+    },
+    {
+      "category": "Maki",
       "image_url": "URL_TO_IMAGE",
       "price": "$10.99",
       "description": "Classic sushi rolls with a variety of fillings and toppings.",
@@ -20,8 +40,18 @@ export const MenuData={
       "flavors": ["Fresh", "Light", "Salty"],
       "quantity": 8
     },
+     {
+    "category": "Gunkan",
+      "image_url": "URL_TO_IMAGE",
+      "price": "$15.99",
+      "description": "A combination of the best sushi rolls, perfect for sharing or for a full meal.",
+      "title": "Sushi Set",
+      "ingredients": ["Tuna", "Salmon", "Avocado", "Cucumber", "Rice", "Seaweed"],
+      "flavors": ["Umami", "Fresh", "Savoury"],
+      "quantity": 1
+    },
     {
-      "category": "Rolls and Maki",
+      "category": "Sashimi",
       "image_url": "URL_TO_IMAGE",
       "price": "$12.99",
       "description": "A crispy roll with a warm, spicy kick.",
@@ -31,7 +61,7 @@ export const MenuData={
       "quantity": 6
     },
     {
-      "category": "Rolls and Maki",
+      "category": "Soup",
       "image_url": "URL_TO_IMAGE",
       "price": "$9.99",
       "description": "Traditional Japanese rolled sushi with fresh fish.",
@@ -40,8 +70,18 @@ export const MenuData={
       "flavors": ["Rich", "Savoury", "Light"],
       "quantity": 6
     },
+     {
+    "category": "Poke",
+      "image_url": "URL_TO_IMAGE",
+      "price": "$15.99",
+      "description": "A combination of the best sushi rolls, perfect for sharing or for a full meal.",
+      "title": "Sushi Set",
+      "ingredients": ["Tuna", "Salmon", "Avocado", "Cucumber", "Rice", "Seaweed"],
+      "flavors": ["Umami", "Fresh", "Savoury"],
+      "quantity": 1
+    },
     {
-      "category": "Rolls and Maki",
+      "category": "Spring Roll",
       "image_url": "URL_TO_IMAGE",
       "price": "$7.99",
       "description": "Crispy fried spring rolls with a savory filling.",
@@ -51,7 +91,7 @@ export const MenuData={
       "quantity": 4
     },
     {
-      "category": "Rolls and Maki",
+      "category": "Sushi Sandwich",
       "image_url": "URL_TO_IMAGE",
       "price": "$8.99",
       "description": "A sweet twist on a traditional roll with fruit and chocolate.",
@@ -61,7 +101,7 @@ export const MenuData={
       "quantity": 6
     },
     {
-      "category": "Sushi, Sashimi, Gunkan",
+      "category": "Yaki",
       "image_url": "URL_TO_IMAGE",
       "price": "$14.99",
       "description": "A delicate piece of sushi with fresh fish on top of seasoned rice.",
@@ -69,6 +109,16 @@ export const MenuData={
       "ingredients": ["Salmon", "Tuna", "Rice", "Seaweed"],
       "flavors": ["Fresh", "Delicate", "Umami"],
       "quantity": 2
+    },
+     {
+    "category": "Wok",
+      "image_url": "URL_TO_IMAGE",
+      "price": "$15.99",
+      "description": "A combination of the best sushi rolls, perfect for sharing or for a full meal.",
+      "title": "Sushi Set",
+      "ingredients": ["Tuna", "Salmon", "Avocado", "Cucumber", "Rice", "Seaweed"],
+      "flavors": ["Umami", "Fresh", "Savoury"],
+      "quantity": 1
     },
     {
       "category": "Sushi, Sashimi, Gunkan",
@@ -202,3 +252,5 @@ export const MenuData={
     }
   ]
 }
+const uniqueCategories = [...new Set(MenuData.items.map(m => m.category))];
+export{uniqueCategories,MenuData};

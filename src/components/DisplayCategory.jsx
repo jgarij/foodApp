@@ -10,7 +10,7 @@ function DisplayCategory({category}) {
      <div className='grid grid-cols-3'>
      {
       filteredItems.map((item)=>(
-       <FoodCart/>
+       <FoodCart item={item}/>
       ))
     }
     </div> 
