@@ -1,19 +1,23 @@
 
+
+
  const slidesData={
   "slides": [
-    {
-      img:"./bg1.jpg",
-      content:"The Best Sushi in Toyoto1"
+     {
+      img: "/bg3.png",
+      title: "THE BEST SUSHI DELIVERY IN YEREVAN",
+      button: "Order Now",
     },
     {
-        img:"./bg2.jpg",
-      content:"Buy Two and get 1 free (Week Day) offer only"
-      
+      img: "/bg2.jpg",
+      title: "BUY 3 ROLLS AND GET 3 FREE!",
+      button: "Order Now",
     },
     {
-       img:"./bg3.png",
-      content:"Get the world best taste here!!"
-    }
+      img: "/bg1.jpg",
+      title: "ENJOY 5% OFF MON–FRI",
+      button: "Shop Now",
+    },
     
   ]
 }

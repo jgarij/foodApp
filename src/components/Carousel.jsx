@@ -18,7 +18,7 @@ export default function Carousel() {
   }
 
   return (
-    <div className="relative w-full h-[400px]">
+    <div className="relative w-full h-[500px] mt-24">
       {/* Background Image */}
       <div
         className="absolute top-0 left-0 w-full h-full bg-blend-color-burn bg-cover bg-center"
@@ -29,9 +29,9 @@ export default function Carousel() {
       {/* <div className="absolute top-0 left-0 w-full h-full bg-black/30"></div> */}
 
       {/* Text on left */}
-      <div className="relative  mt-32 w-1/2 h-full align-middle  flex items-center ">
-        <p className="text-white text-2xl font-bold h-full">
-          {slides[currentPage].content}
+      <div className="relative  w-full sm:w-1/2 h-full align-middle justify-between flex items-center  px-2">
+        <p className="text-white text-2xl font-bold">
+          {slides[currentPage].title}
           <Button content="Order Now" route="/menu" ></Button>
         </p>
 
