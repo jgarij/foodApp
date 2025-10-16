@@ -38,9 +38,9 @@ export default function ReviewCarousel({ reviews }) {
 
   return (
     <>
-      <h2 className="text-3xl font-bold">YOUR REVIEWS COUNTS</h2>
-      <div className="flex gap-3 text-2xl mb-5">
-        ⭐⭐⭐⭐⭐ 4 <span><a href="">Google Reviews</a></span>
+      <h2 className="text-2xl md:text-3xl font-bold">YOUR REVIEWS COUNTS</h2>
+      <div className="flex gap-3 text-xl mdtext-2xl mb-5">
+        ⭐⭐⭐⭐ 4 <span><a href="">Google Reviews</a></span>
       </div>
 
       <div className="relative w-full overflow-hidden">
@@ -51,7 +51,7 @@ export default function ReviewCarousel({ reviews }) {
           {duplicatedReviews.map((review, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-1/4 px-2"
+              className="flex-shrink-0 w-full sm:w-1/4 px-2"
             >
               <div className="flex flex-col justify-between h-[390px] rounded border-gray-100 border-2 p-4 text-xl">
                 <div>{review.text}</div>
