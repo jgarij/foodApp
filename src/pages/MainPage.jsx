@@ -4,7 +4,7 @@ import MenuSection from '../components/MenuSection'
 import Cart from '../components/Cart'
 function MainPage() {
   return (
-    <div className='mt-32 flex'>
+    <div className='mt-32 flex px-8 '>
       <div className='w-1/5'>
        <CategorySidebar></CategorySidebar>
        </div>

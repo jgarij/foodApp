@@ -55,29 +55,39 @@ const tabData = {
 
 export function TabsDemo() {
   return (
+    <>
+  
       <Tabs defaultValue={tabName[0]}>
-        <TabsList>
+        <TabsList className="gap-4">
           {
             tabName.map((tab) => (
-              <TabsTrigger className="text-xl" value={tab}>{tab}</TabsTrigger>
+              <TabsTrigger className="text-base py-4 px-3" value={tab}>{tab}</TabsTrigger>
             ))
           }
         </TabsList>
+
+
         {/* showing all delivery data */}
+        <div className="mt-5">
         {
           tabName.map(tab => (
 
             <TabsContent key={tab} value={tab}>
+              <h2 className="text-xl ">{tab}</h2>
+             
               {
                 tabData[tab].map((data) => (
                   
                   <FAQSection data={data} ></FAQSection>
                 ))
               }
+            
             </TabsContent>
           ))
         }
+        </div>
       </Tabs>
- 
+    
+      </>
   )
 }

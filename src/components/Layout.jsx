@@ -6,7 +6,7 @@ import TopBar from './TopBar';
 import Header from '../pages/Header';
 export default function Layout() {
   return (
-    <div>
+    <div className=''>
       <Link to="/"><Header></Header></Link>
       <Outlet></Outlet>
       <Link to="/" ><Footer></Footer></Link> 

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 function Button({content,route}) {
   return (
     <div>
-    <Link to={route}>
-    <div className='bg-white font-normal text-base   inline-block text-pink-600 rounded-full  p-2 mt-3  text-center'>
+    <Link to="/menu">
+    <div className='bg-white text-base py-2 px-2 md:p-4 hover:bg-pink-600 hover:text-white inline-block text-pink-600 rounded-full   mt-3  text-center font-bold'>
       {content}
     </div>
     </Link>

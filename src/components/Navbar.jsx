@@ -8,9 +8,9 @@ function Navbar() {
 
     return (
 
-        <div className='flex justify-between  items-center bg-black shadow-2xl  w-full px-0 md:px-10 '>
+        <div className='flex justify-between  items-center bg-black shadow-2xl  w-full px-0 md:px-8 '>
 
-            <div className='hidden md:block font-bold text-xl md:text-2xl'>
+            <div className='hidden md:block  font-bold text-xl md:text-3xl'>
                 <p>MURAM<span className='text-pink-900'>I</span>CITY</p>
             </div>
             <div className='md:hidden block px-2 gap-4'>

@@ -7,6 +7,7 @@ import CardCategory from '../components/CardCategory'
 import ReviewCarousel from '../components/ReviewCarousel'
 import HeroSectionFooter from './HeroSectionFooter'
 import FAQ from "./FAQ"
+import Order from './Order'
 import { TabsDemo } from './Tabs'
 export default function HomePage() {
 
@@ -19,17 +20,20 @@ export default function HomePage() {
     { name: "Frank", text: "Will buy again." },
   ];
   return (
-    <div className="flex flex-col gap-5">
-
+    <div className="flex flex-col gap-11">
 
       <Carousel></Carousel>
-      <HeroSectionFooter></HeroSectionFooter>
+
+      
       <MostWanted></MostWanted>
       <Categories></Categories>
-      <ReviewCarousel reviews={reviewsData} />
-
+      <Order></Order>
+      <ReviewCarousel reviews={reviewsData} /> 
       <FAQ></FAQ>
+      {/* 
+      
 
+ */}
 
 
 

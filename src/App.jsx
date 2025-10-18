@@ -32,14 +32,10 @@ function App() {
    <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="" element={<HomePage/> }>
-        <Route path="menu" element={<MainPage/>} />
-        {/* <Route index element={<Opinion />} /> 
-        // <Route path="menu" element={<MenuSection />}>
-          <Route path="main" element={<HeroSectionFooter />} /> */}
-          {/* <Route path="settings" element={<Settings />} /> */}
-        </Route>
+        <Route index element={<HomePage/> }/>
+        <Route path="menu" element={<MainPage/>} />   
       </Route>
+    
     </Routes>
 </BrowserRouter>
 
