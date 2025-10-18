@@ -2,36 +2,69 @@ import React from 'react'
 import FooterSection from '../components/FooterSection'
     import { FaInstagram } from "react-icons/fa";
     import Button from '../components/Button';
+
+const data=[
+  {
+    "Shop":['Menu','Muramoney','Sign in','Create account']
+
+  },
+  {
+    "Help":['About us','Contact us','Blog','Privacy policy']
+
+  }
+]
+
+const services = [
+  'DELIVERY AND PICK UP EVERY DAY',
+  '10:00 AM - 02:00 AM',
+  '+374 11 388888',
+   'HERATSI 16',
+   'YEREVAN 0025'
+]
+
 function Footer() {
   return (
-    <>
-      <p className='border-2 border-gray-50'></p>
-      <div className='mt-12  flex-col md:flex-row  h-[300px] justify-center items-center'>
-        <div className='w-full md:w-1/2 flex flex-col gap-2 text-xl sm:text-2xl'>
-          <h3 className=' font-bold'> MERAMICITY</h3>
+    <div className='px-2 md:px-8'>
+     
+      <div className='mt-12  flex md:flex-row flex-col'>
+        <div className='md:w-1/2 w-full   flex flex-col gap-4'>
+        <div className=' font-bold text-3xl'>
+                <p>MURAM<span className='text-pink-900'>I</span>CITY</p>
+         </div>
+         <div className='flex gap-2'>
           <p>⭐⭐⭐⭐⭐⭐</p>
-          <p>4.5 <span>Google Review
-          </span></p>
+          <p>4.5 <span>Google Review</span></p>
+</div>
           <Button route="/menu" content="Write a review" />
-          <div className='flex text-2xl md:text-3xl gap-5'>
-          <div className='bg-pink-500 md:p-2 rounded-full'><FaInstagram/></div> 
-          <div className='bg-pink-500 md:p-2 rounded-full'><FaInstagram/></div> 
+          <div className='flex  gap-5'>
+          <div className='text-3xl'><FaInstagram/></div> 
+          <div className=' text-3xl'><FaInstagram/></div> 
           </div>
         </div>
 
-        <div className='flex justify-between w-full md:w-1/2 flex-wrap'>
-          <FooterSection></FooterSection>
-          <FooterSection></FooterSection>
-          <FooterSection></FooterSection>
+        <div className='flex md:flex-row flex-col md:gap-0 gap-4  justify-between w-full md:w-1/2 '>
+        <div className="flex  w-full md:w-2/3 ">
+        {data.map((item)=>(
+        <FooterSection item={item}></FooterSection>
+        ))  
+        }  
+        </div>
+      <div className='w-full text-base md:w-1/3 '>
+                {
+                  services.map((m)=>(
+                    <p className='font-semibold sm:font-bold'>{m}</p>
+                  ))
+                }
+      </div>
         </div>
       </div>
-      {/* <div className='border-2 border-gray-50 md:mt-0'></div> */}
 
-      {/* <div className='flex justify-start items-center  text-base sm:text-xl py-3 md:mt-0'>
-        <p className='text-center '>Copyright @ Cosmostaker </p>
-          <p>  Created By Garima Jain</p>
-      </div> */}
-    </>
+      <div className='border-1 border-gray-400 mt-6 '></div>
+      <div className='flex md:flex-row flex-col items-center justify-between py-2 mb-2 text-base '>
+      <div className='w-full  md:w-1/2'>Copyright @ Cosmostaker </div>
+      <div className='w-full md:w-1/2'>  Created By Garima Jain</div>
+     </div> 
+    </div>
   )
 }
 
