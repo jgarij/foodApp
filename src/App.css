@@ -76,7 +76,13 @@ body {
 .rightbox::-webkit-scrollbar {
   display: none;  /* Hide scrollbar in webkit browsers */
 }
+.no-scrollbar::-webkit-scrollbar{
+  display: none;
+}
 
+.scroll-target {
+  scroll-margin-top: 80px; /* Adjust based on your sticky header height */
+}
 .zoom-out {
   animation: zoomOut 1.4s ease-out;
 }
@@ -102,4 +108,23 @@ body {
   100% {
     transform: translateX(30%);
   }
+}
+
+.swiper-button-prev {
+  left: 40%;
+  background: red;
+  right: auto;
+}
+.swiper-button-next {
+  left: 50%;
+  right: auto;
+  background-color: aqua;
+}
+
+::-webkit-scrollbar {
+  width: 4px;       
+}
+::-webkit-scrollbar-thumb {
+  background: #888;   /* Or your preferred color */
+  border-radius: 6px;
 }

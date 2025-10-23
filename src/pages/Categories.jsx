@@ -1,8 +1,17 @@
 import React, { useRef, useEffect, useState } from "react";
 import CardCategory from "../components/CardCategory";
-import { uniqueCategories } from "../assets/data/MenuData";
+
+import foodData from "@/assets/data/Menu";
+import { uniqueCategories } from "@/assets/data/Menu";
+
+//  const [uniqueCategories, setUniqueCategories] = useState([]);
+// console.log("uniquecategory",uniqueCategories)
+
+
 
 export default function Categories() {
+
+
   const slider1Ref = useRef(null);
   const slider2Ref = useRef(null);
 
@@ -100,3 +109,60 @@ export default function Categories() {
     </div>
   );
 }
+
+
+// import React, { useRef, useEffect, useState } from "react";
+// import CardCategory from "../components/CardCategory";
+// import foodData from "@/assets/data/Menu";
+
+// export default function Categories() {
+//   const [uniqueCategories, setUniqueCategories] = useState([]);
+
+
+
+
+
+//   const slider1Ref = useRef(null);
+//   const slider2Ref = useRef(null);
+
+//   const half = Math.ceil(uniqueCategories.length / 2);
+//   const firstHalf = uniqueCategories.slice(0, half);
+//   const secondHalf = uniqueCategories.slice(half);
+
+//   // Your existing mouse and wheel event logic ...
+
+//   return (
+//     <div className="mt-10 select-none px-2 md:px-8">
+//       <h3 className="text-2xl md:text-4xl font-bold text-white">
+//         OUR CATEGORIES
+//       </h3>
+
+//       <div
+//         className="flex flex-col gap-10 cursor-grab mt-5"
+//         // ...event handlers here
+//       >
+//         <div
+//           ref={slider1Ref}
+//           className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 no-scrollbar"
+//         >
+//           {firstHalf.map(item => (
+//             <div key={item}>
+//               <CardCategory item={{ name: item }} />
+//             </div>
+//           ))}
+//         </div>
+
+//         <div
+//           ref={slider2Ref}
+//           className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 no-scrollbar"
+//         >
+//           {secondHalf.map(item => (
+//             <div key={item}>
+//               <CardCategory item={{ name: item }} />
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }

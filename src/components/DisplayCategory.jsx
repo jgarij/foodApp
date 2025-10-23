@@ -2,7 +2,7 @@ import React from 'react'
 import { MenuData } from '../assets/data/MenuData'
 import FoodCart from './FoodCart'
 function DisplayCategory({category}) {
-  console.log("category passes",category)
+  // console.log("category passes",category)
   const filteredItems = MenuData.items.filter(item => item.category === category);
   return (
     <div className='mt-7'>

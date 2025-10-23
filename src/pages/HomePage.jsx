@@ -9,7 +9,9 @@ import HeroSectionFooter from './HeroSectionFooter'
 import FAQ from "./FAQ"
 import Order from './Order'
 import { TabsDemo } from './Tabs'
+// import Slider from "../components/slider"
 export default function HomePage() {
+
 
   const reviewsData = [
     { name: "Alice", text: "Great product! lorem22 " },
@@ -24,7 +26,7 @@ export default function HomePage() {
 
       <Carousel></Carousel>
 
-      
+     
       <MostWanted></MostWanted>
       <Categories></Categories>
       <Order></Order>
