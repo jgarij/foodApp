@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart,decreaseQuantity,increaseQuantity } from '@/Redux/cartSlice'
 import Modal from './Modal'
-
+import ModalPortal from './ModalPortal'
 export default function FoodCart({ item }) {
   const [itemQuantity,setItemQuantity] = useState(1);
   const [showModal, setShowModal] = useState(false);
@@ -109,6 +109,7 @@ useEffect(() => {
 
  {
        showModal && (
+        <ModalPortal>
         <div className='fixed inset-0 flex items-center justify-center z-50  mt-9'>
 
 
@@ -207,7 +208,7 @@ useEffect(() => {
      </div>
      </div>
      </div>
-  
+  </ModalPortal>
        )
     }
 

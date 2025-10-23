@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CategorySidebar from '../components/CategorySidebar';
@@ -7,6 +9,7 @@ import foodData from '@/assets/data/Menu';
 import { useNavigate } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import Filter from '@/components/Filter';
+import { beginAutoScrollGuard } from '@/lib/scroll';
 import { useSelector, useDispatch } from 'react-redux';
 import { setActiveCategory } from '@/Redux/categorySlice';
 function MainPage() {
@@ -41,46 +44,101 @@ const unslugify = (slug) => {
 
 
   useEffect(() => {
-    if (category) {
-      const real = unslugify(category);
-      console.log("real category", real);
-      if (real && real !== activeCategory) {
-        dispatch(setActiveCategory(real));
-        console.log("Active Category updated from URL:", real);
-      }
+    if (!category) return;
+    const real = unslugify(category);
+    if (real && real !== activeCategory) {
+      dispatch(setActiveCategory(real));
+      // Delay scroll to let content render
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const header = document.querySelector(`#${category} > h2`);
+          const container = document.getElementById('menu-scroll-container');
+          if (header && container) {
+            const containerTop = container.getBoundingClientRect().top;
+            const headerTop = header.getBoundingClientRect().top;
+            const offsetTop = headerTop - containerTop + container.scrollTop;
+            container.scrollTo({ top: offsetTop, behavior: 'auto' });
+          }
+        });
+      });
     }
-  }, [category, dispatch, activeCategory]);
+  }, [category, dispatch]);
 
 
   useEffect(() => {
-  const sections = document.querySelectorAll("[data-category]");
-  if (!sections.length) return;
+    const container = document.getElementById("menu-scroll-container");
+    if (!container) return;
 
-  const observerOptions = {
-    root: null,
-    rootMargin: "-20% 0px -70% 0px", // adjust based on your design
-    threshold: 0,
-  };
+    const headers = Array.from(
+      container.querySelectorAll("h2[data-observe='true'][data-category]")
+    );
+    const sentinels = Array.from(
+      container.querySelectorAll("[data-sentinel='true'][data-category]")
+    );
+    if (!headers.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const category = entry.target.getAttribute("data-category");
-        if (category && category !== activeCategory) {
-          dispatch(setActiveCategory(category));
-          const slug = category.toLowerCase().replace(/\s+/g, "-");
+    let ticking = false;
+    const onScroll = () => {
+      if (typeof window !== 'undefined' && window.__menuAutoScrolling) return;
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const containerTop = container.getBoundingClientRect().top;
+        const containerBottom = container.getBoundingClientRect().bottom;
+
+        // prefer the sentinel that crossed the top; fallback to nearest header
+        let active = null;
+        for (const s of sentinels) {
+          const top = s.getBoundingClientRect().top;
+          if (top >= containerTop - 1 && top <= containerTop + 2) {
+            active = s.getAttribute('data-category');
+            break;
+          }
+        }
+
+        if (!active) {
+          let bestHeader = null;
+          let bestDelta = Infinity;
+          for (const h of headers) {
+            const delta = Math.abs(h.getBoundingClientRect().top - containerTop);
+            if (delta < bestDelta) {
+              bestDelta = delta;
+              bestHeader = h;
+            }
+          }
+          active = bestHeader ? bestHeader.getAttribute('data-category') : null;
+        }
+
+        if (active && active !== activeCategory) {
+          dispatch(setActiveCategory(active));
+          const slug = active.toLowerCase().replace(/\s+/g, '-');
           navigate(`/menu/${slug}`, { replace: true });
         }
-      }
-    });
-  }, observerOptions);
+      });
+    };
 
-  sections.forEach((section) => observer.observe(section));
+    container.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => container.removeEventListener('scroll', onScroll);
+  }, [dispatch, navigate, activeCategory]);
 
-  return () => {
-    sections.forEach((section) => observer.unobserve(section));
-  };
-}, [dispatch, navigate, activeCategory]);
+  // Initial deep link via hash or URL param
+  useEffect(() => {
+    const container = document.getElementById("menu-scroll-container");
+    const targetSlug = (window.location.hash || "").replace(/^#/, "") || category;
+    if (!targetSlug) return;
+    const targetFromSlug = unslugify(targetSlug);
+    if (!targetFromSlug) return;
+    const header = document.querySelector(`#${targetSlug} > h2`);
+    if (header && container) {
+      const containerTop = container.getBoundingClientRect().top;
+      const headerTop = header.getBoundingClientRect().top;
+      const offsetTop = headerTop - containerTop + container.scrollTop; // exact offset inside container
+      beginAutoScrollGuard(container);
+      container.scrollTo({ top: offsetTop, behavior: "auto" });
+    }
+  }, []);
 
   return (
     <div className='flex flex-col  relative h-[100vh]'>
@@ -91,7 +149,7 @@ const unslugify = (slug) => {
         <div className=' w-full md:w-1/5 md:h-[calc(100vh-8rem)] md:overflow-y-auto sticky top-0 md:relative'>
           <CategorySidebar />
         </div>
-        <div className='md:w-3/5 w-full h-[calc(100vh-8rem)] overflow-y-auto px-3 no-scrollbar'>
+        <div id='menu-scroll-container' className='md:w-3/5 w-full h-[calc(100vh-8rem)] overflow-y-auto px-3 no-scrollbar scroll-smooth'>
           <MenuSection />
         </div>
         <div className='md:w-1/5   hidden min-h-[calc(100vh-8rem)] rounded-2xl p-3 bg-white  sticky top-[8rem] self-start md:flex flex-col  shadow-lg'>

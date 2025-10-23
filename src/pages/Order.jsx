@@ -8,7 +8,7 @@ export default function Order() {
         <div className='w-full md:w-1/2'></div>
         <div className='w-full md:w-1/2   ' >
           <p className='text-xl  md:text-2xl font-bold'>ORDER,LEVEL US YOUR STATUS & GET MURAMONEY AS CASHBACK</p>
-          <Button content="More Infos" route="/muramoney" />
+          <Button content="More Info" route="/muramoney" />
         </div>
 
       </div>

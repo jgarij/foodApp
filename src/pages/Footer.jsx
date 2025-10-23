@@ -24,9 +24,9 @@ const services = [
 
 function Footer() {
   return (
-    <div className='px-2 md:px-8'>
+    <div className='px-2 mt-24 md:px-8'>
      
-      <div className='mt-12  flex md:flex-row flex-col'>
+      <div className='mt-6  flex md:flex-row flex-col'>
         <div className='md:w-1/2 w-full   flex flex-col gap-4'>
         <div className=' font-bold text-3xl'>
                 <p>MURAM<span className='text-pink-900'>I</span>CITY</p>

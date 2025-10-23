@@ -2,9 +2,9 @@ import React from 'react'
 import AboutCart from '../components/AboutCart'
 function MorMoneyAbout() {
   return (
-    <div>
-        <h2 className='text-3xl text-bold'>ABOUT US</h2>
-         <div className='flex flex-row justify-center items-center gap-4'>
+    <div className='px-8 mt-9'>
+        <h2 className='text-4xl text-bold'>ABOUT MAURAMONEY</h2>
+         <div className='grid grid-cols-3 gap-4'>
             <AboutCart></AboutCart>
             <AboutCart></AboutCart>
             <AboutCart></AboutCart>
