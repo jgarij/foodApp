@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import { BrowserRouter,Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import './App.css'
 // import TopBar from './components/TopBar'
 // import Navbar from './components/Navbar'
@@ -23,21 +23,32 @@ import MenuSection from './components/MenuSection'
 import HeroSection from './pages/HeroSection'
 import MainPage from './pages/MainPage'
 import HomePage from './pages/HomePage'
+import CartPage from './pages/CartPage'
+import Modal from './components/Modal'
+
+
+
+
 function App() {
 
 
 
 
   return (
-   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage/> }/>
-        <Route path="menu" element={<MainPage/>} />   
-      </Route>
-    
-    </Routes>
-</BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+           <Route path="muramoney" element={<Muramoney/>}></Route>
+          <Route path="menu" element={<MainPage />} />
+          <Route path="menu/:category" element={<MainPage />} />
+          <Route path="cart" element={<CartPage />} />
+         
+
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
 
 
   )
