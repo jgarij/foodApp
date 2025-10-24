@@ -83,8 +83,8 @@ console.log("itemList",itemList);
       <div className="w-full lg:w-3/5">
         {/* Progress Steps */}
         <div className="flex items-center gap-4 mb-6 text-gray-600 text-sm">
-          <span className="font-semibold text-black">Shipping</span> ➜
-          <span>Review</span> ➜
+          <span className=" text-black">Shipping</span> ➜
+          <span className="font-semibold">Review</span> ➜
           <span>Payment</span> ➜
           <span>Confirmation</span>
         </div>
