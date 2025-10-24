@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import Login from "@/components/Login";
+import { useNavigate } from "react-router-dom";
 
 import {
   addToCart,
@@ -13,6 +15,7 @@ import foodData from "../assets/data/Menu";
 import Slider from "../components/slider";
 
 export default function CartPage() {
+  const navigate=useNavigate()
   const [drinks, setDrinks] = useState([]);
   const [sauces, setSauces] = useState([]);
 
@@ -155,16 +158,28 @@ export default function CartPage() {
           </div>
           <div className="flex justify-between">
             <span>Shipping</span>
-            <span>₹50</span>
+            <span>₹0</span>
           </div>
           <div className="flex justify-between font-bold text-lg">
             <span>Total</span>
-            <span>₹{subtotal + 50}</span>
+            <span>₹{subtotal + 0}</span>
           </div>
         </div>
-        <button className="bg-black text-white p-3 w-full text-lg rounded-xl mt-5 hover:bg-gray-800 transition">
-          Proceed to Payment
-        </button>
+       <button
+  onClick={() => {
+    const userInfo = localStorage.getItem("UserInfo");
+    if (userInfo) {
+      navigate("/checkout");
+    } else {
+      navigate("/signin");
+    }
+  }}
+  className="bg-black text-white p-3 w-full text-lg rounded-xl mt-5 hover:bg-gray-800 transition"
+>
+  Proceed to Payment
+</button>
+        {/* <Login/> */}
+
       </div>
     </div>
   );

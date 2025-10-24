@@ -212,7 +212,9 @@ export default function CategorySidebar() {
 
            
             <span
-              onClick={() => handleCategoryClick(item.category)}
+             onClick={() => {
+    if (!item.subcategories) handleCategoryClick(item.category);
+  }}
               className={`hidden md:inline-block  md:border-none px-4 py-2 rounded-full border text-sm font-medium  cursor-pointer ${
                 activeCategory === item.category
                   ? "text-pink-600 border-pink-600"
@@ -225,12 +227,12 @@ export default function CategorySidebar() {
             {/* ✅ Mobile logic: 
                 show subcategories if exist, otherwise main category */}
             {item.subcategories ? (
-              <div className="flex flex-row flex-wrap md:flex-col gap-2">
+              <div className="flex flex-row flex-wrap md:flex-col md:items-start md:justify-start gap-2 px-4">
                 {Object.keys(item.subcategories).map((subName, subIndex) => (
                   <button
                     key={subIndex}
                     onClick={() => handleCategoryClick(subName)}
-                    className={`px-4 py-2 rounded-full md:border-none text-sm font-medium transition-all duration-200 flex-shrink-0 ${
+                    className={`px-4 py-2 md:px-0 rounded-full md:border-none text-sm font-medium transition-all duration-200 flex-shrink-0 ${
                       activeCategory === subName
                         ? "text-pink-600 border-pink-600 "
                         : "text-gray-200 border-gray-600 hover:text-pink-400 hover:border-pink-500"

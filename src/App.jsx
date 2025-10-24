@@ -25,8 +25,10 @@ import MainPage from './pages/MainPage'
 import HomePage from './pages/HomePage'
 import CartPage from './pages/CartPage'
 import Modal from './components/Modal'
+import LoginPage from './pages/LoginPage'
 
-
+import Checkout from './pages/Checkout'
+import Thankyou from './pages/Thankyou'
 
 
 function App() {
@@ -40,6 +42,9 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
            <Route path="muramoney" element={<Muramoney/>}></Route>
+            <Route path="signin" element={<LoginPage/>}></Route>
+              <Route path="thankyou" element={<Thankyou />} />
+                        <Route path="checkout" element={<Checkout/>}></Route>
           <Route path="menu" element={<MainPage />} />
           <Route path="menu/:category" element={<MainPage />} />
           <Route path="cart" element={<CartPage />} />
