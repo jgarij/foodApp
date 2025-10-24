@@ -67,7 +67,7 @@ export default function CartPage() {
                   <div className="flex items-center w-full md:w-1/3 mb-3 md:mb-0">
                     <img
                       className="h-[90px] w-[90px] object-cover rounded-lg mr-4"
-                      src="./bg1.jpg"
+                      src="./bg2.jpg"
                       alt={item.name}
                     />
                     <div>
