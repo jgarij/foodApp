@@ -3,13 +3,13 @@ import { FaCartPlus } from "react-icons/fa";
 export default function AboutCart() {
   return (
   
-    <div className='w-[400px] h-[290px] p-3 border-1 mt-5 flex gap-2 flex-col shadow rounded-xl justify-between'>
+    <div className='h-[300px] p-3 border-1 mt-5 flex gap-2 flex-col shadow rounded-xl justify-between'>
      <div className='flex justify-between'>
         <h3 className='text-2xl'>Tourists</h3>
-        <FaCartPlus></FaCartPlus>
+        <FaCartPlus size={28}></FaCartPlus>
      </div>
      <div className="flex flex-col gap-3">
-        <p className='text-xl'>3 % Cashback(Muramoney)</p>
+        <p className='text-2xl'>3 % Cashback(Muramoney)</p>
         <p>Starting 0</p>
      </div>
      <div className='border-1 border-gray-500'></div>

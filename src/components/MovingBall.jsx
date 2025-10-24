@@ -4,7 +4,7 @@ export default function MovingBall() {
     <div className="flex items-center justify-center">
       <svg
         viewBox="0 0 400 400"
-        className="w-80 h-80"
+        className="w-120 h-120"
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
       >

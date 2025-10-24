@@ -64,7 +64,7 @@ export default function Categories() {
   const stopDragging = () => setIsDragging(false);
 
   return (
-    <div className="mt-10 select-none  px-2 md:px-8">
+    <div className="mt-6 select-none  px-2 md:px-8">
       <h3 className="text-2xl md:text-4xl font-bold   text-white">
         OUR CATEGORIES
       </h3>

@@ -1,3 +1,4 @@
+// CategorySidebar
 // import React, { useState,useEffect } from "react";
 // import foodData from "../assets/data/Menu"
 // import { useSelector,useDispatch } from "react-redux";
@@ -38,7 +39,7 @@
 //         const category = entry.target.getAttribute("data-category");
 //         if (category && category !== activeCategory) {
 //           dispatch(setActiveCategory(category));
-//           navigate(`/menu/${slugify(category)}`, { replace: true });
+//           navigate(/menu/${slugify(category)}, { replace: true });
 //         }
 //       }
 //     });
@@ -54,10 +55,10 @@
 
 // const handleCategoryClick=(category)=>{
 //   dispatch(setActiveCategory(category));
-//   navigate(`/menu/${slugify(category)}`);
+//   navigate(/menu/${slugify(category)});
 //   console.log("active category",category);
 
-//   const section = document.querySelector(`[data-category="${category}"]`);
+//   const section = document.querySelector([data-category="${category}"]);
 //   if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
 // }
 
@@ -98,7 +99,7 @@
 //         >
 //           <span
 //             onClick={() => !item.subcategories && handleCategoryClick(item.category)}
-//             className={`font-medium cursor-pointer px-3 py-2 rounded ${activeCategory === item.category ? "text-pink-600 font-semibold" : "text-white"} border-1 border-gray-400 rounded-2xl md:border-none ${item.subcatgories?"hidden:md:block":""}`}
+//             className={font-medium cursor-pointer px-3 py-2 rounded ${activeCategory === item.category ? "text-pink-600 font-semibold" : "text-white"} border-1 border-gray-400 rounded-2xl md:border-none ${item.subcatgories?"hidden:md:block":""}}
 //           >
 //             {item.category}
 //           </span>
@@ -132,11 +133,13 @@
 import React, { useEffect } from "react";
 import foodData from "../assets/data/Menu";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { setActiveCategory } from "@/Redux/categorySlice";
+import { scrollSectionIntoContainer } from "@/lib/scroll";
 
 export default function CategorySidebar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const activeCategory = useSelector((state) => state.category.activeCategory);
 
@@ -159,7 +162,7 @@ export default function CategorySidebar() {
 //         const category = entry.target.getAttribute("data-category");
 //         if (category && category !== activeCategory) {
 //           dispatch(setActiveCategory(category));
-//           navigate(`/menu/${slugify(category)}`, { replace: true });
+//           navigate(/menu/${slugify(category)}, { replace: true });
 //         }
 //       }
 //     });
@@ -174,11 +177,27 @@ export default function CategorySidebar() {
 
 
   const handleCategoryClick = (category) => {
-    dispatch(setActiveCategory(category));
-    navigate(`/menu/${slugify(category)}`);
+    const slug = slugify(category);
+  const targetPath = `/menu/${slug}`;
 
-    const section = document.querySelector(`[data-category="${category}"]`);
-    if (section) section.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Push URL first so users see immediate change
+    if (location.pathname !== targetPath) {
+      navigate(targetPath);
+    }
+
+    // Update state immediately for UI highlight
+    dispatch(setActiveCategory(category));
+
+    // Scroll after the route paint to ensure nodes are in place
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const ok = scrollSectionIntoContainer('menu-scroll-container', slug, 'smooth');
+        if (!ok) {
+          const node = document.querySelector(`#${slug}`);
+          if (node) node.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
   };
 
   return (
@@ -193,7 +212,9 @@ export default function CategorySidebar() {
 
            
             <span
-              onClick={() => handleCategoryClick(item.category)}
+             onClick={() => {
+    if (!item.subcategories) handleCategoryClick(item.category);
+  }}
               className={`hidden md:inline-block  md:border-none px-4 py-2 rounded-full border text-sm font-medium  cursor-pointer ${
                 activeCategory === item.category
                   ? "text-pink-600 border-pink-600"
@@ -206,12 +227,12 @@ export default function CategorySidebar() {
             {/* ✅ Mobile logic: 
                 show subcategories if exist, otherwise main category */}
             {item.subcategories ? (
-              <div className="flex flex-row flex-wrap md:flex-col gap-2">
+              <div className="flex flex-row flex-wrap md:flex-col md:items-start md:justify-start gap-2 px-4">
                 {Object.keys(item.subcategories).map((subName, subIndex) => (
                   <button
                     key={subIndex}
                     onClick={() => handleCategoryClick(subName)}
-                    className={`px-4 py-2 rounded-full md:border-none text-sm font-medium transition-all duration-200 flex-shrink-0 ${
+                    className={`px-4 py-2 md:px-0 rounded-full md:border-none text-sm font-medium transition-all duration-200 flex-shrink-0 ${
                       activeCategory === subName
                         ? "text-pink-600 border-pink-600 "
                         : "text-gray-200 border-gray-600 hover:text-pink-400 hover:border-pink-500"
